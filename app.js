@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
@@ -10,10 +12,10 @@ const blogRoute = require("./routes/blog");
 const { checkForAuthenticationCookie } = require("./middlewares/auth");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 mongoose
-  .connect("mongodb://localhost:27017/paper-tales")
+  .connect(process.env.MONGO_URL)
   .then((e) => console.log("Mongodb connected"));
 
 app.set("view engine", "ejs");

@@ -20,7 +20,7 @@ router.post("/signup", async (req, res) => {
       email: email,
       password: password,
     });
-    return res.redirect("/");
+    return res.redirect("/user/signin");
   } catch (err) {
     console.log(err);
   }
@@ -41,4 +41,5 @@ router.post("/signin", async (req, res) => {
 router.get("/signout", (req, res) => {
   res.clearCookie("token").redirect("/");
 });
+
 module.exports = router;
